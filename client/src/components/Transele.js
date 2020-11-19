@@ -1,5 +1,6 @@
 import React,{useContext} from 'react';
 import {GlobalContext} from '../context/global';
+import {numberWithCommas} from '../utils/format'
 
 export const Transele = ({transaction}) => {
 
@@ -9,8 +10,8 @@ export const Transele = ({transaction}) => {
     return (
         <div>
             <li className={transaction.amount < 0 ? 'minus' : 'plus'}>
-                {transaction.text} <span>{sign}${Math.abs(transaction.amount)}</span>
-                <button onClick={() => deleteTransaction(transaction.id)} className="delete-btn">x</button>
+                {transaction.text} <span>{sign}${numberWithCommas(Math.abs(transaction.amount))}</span>
+                <button onClick={() => deleteTransaction(transaction._id)} className="delete-btn">x</button>
             </li>
         </div>
     )
